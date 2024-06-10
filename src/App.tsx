@@ -1,11 +1,17 @@
-import { MoonIcon } from "@heroicons/react/16/solid";
+import { useState } from "react";
+import Header from "./components/Header";
+import Search from "./components/Search";
+
+interface Countries {
+  
+}
 
 function App() {
+  
   return (
     <>
-      <p className="">react</p>
-
-      <MoonIcon className="size-6" />
+      {/* <Header /> */}
+      <Search />
     </>
   );
 }
