@@ -2,10 +2,13 @@ import { useState } from "react";
 import { fetchData } from "./fetchData";
 
 function Search() {
-  const [searchValue, setSearchValue] = useState<string>("");
+//   const [searchValue, setSearchValue] = useState<string>("");
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
+    const value = event.target.value;
+    console.log(value);
+    const data = fetchData(value);
+    
   };
 
   return (
