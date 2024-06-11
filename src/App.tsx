@@ -1,5 +1,7 @@
 import jsonData from "./data.json";
 import CountryCard from "./components/CountryCard";
+import Header from "./components/Header";
+import Search from "./components/Search";
 
 interface Country {
   alpha3Code: string;
@@ -12,31 +14,25 @@ interface Country {
 
 function App() {
   return (
-    <div className="px-12">
-      <ul>
-        {jsonData.map((country) => (
-          <CountryCard
-            key={country.alpha3Code}
-            flag={country.flag}
-            country={country.name}
-            population={country.population}
-            region={country.region}
-            capital={country.capital || ""}
-            alpha3Code={""}
-          />
-        ))}
-      </ul>
-    </div>
+    <>
+      <Header />
+      <div className="bg-veryLightGray dark:bg-darkBlue px-12 pt-5">
+        <ul>
+          {jsonData.map((country: Country) => (
+            <CountryCard
+              key={country.alpha3Code}
+              flag={country.flag}
+              country={country.name}
+              population={country.population}
+              region={country.region}
+              capital={country.capital || ""}
+              alpha3Code={""}
+            />
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 
 export default App;
-// <li key={country.alpha3Code }>
-//   <img src={country.flag} alt="" />
-//   <h2>{country.name}</h2>
-//   <p>
-//     Population: <span>{country.population}</span>
-//   </p>
-//   <p>Region: {country.region}</p>
-//   <p>Capital: {country.capital}</p>
-// </li>

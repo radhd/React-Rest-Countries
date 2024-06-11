@@ -10,8 +10,8 @@ interface CountryCardProps {
 function CountryCard(props: CountryCardProps) {
   const { alpha3Code, flag, country, population, region, capital } = props;
   return (
-    <>
-      <li key={alpha3Code}>
+    <div>
+      <li className="border-1 mb-10 bg-white shadow-lg" key={alpha3Code}>
         <img src={flag} alt="" />
         <h2>{country}</h2>
         <p>
@@ -24,7 +24,7 @@ function CountryCard(props: CountryCardProps) {
           Capital: <span>{capital}</span>
         </p>
       </li>
-    </>
+    </div>
   );
 }
 
