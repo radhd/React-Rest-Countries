@@ -2,7 +2,13 @@ import { useState } from "react";
 import jsonData from "../data.json";
 import CountryCard from "./CountryCard";
 
-function Search({ onSearch, searchValue }) {
+interface SearchProps {
+  searchValue: string;
+  onSearch: (value: string) => void;
+}
+
+function Search(props: SearchProps) {
+  const { searchValue, onSearch } = props;
   return (
     <>
       <label htmlFor="">

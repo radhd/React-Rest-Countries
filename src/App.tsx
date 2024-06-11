@@ -3,6 +3,7 @@ import CountryCard from "./components/CountryCard";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import { useState } from "react";
+import Filter from "./components/Filter";
 
 interface Country {
   alpha3Code: string;
@@ -33,11 +34,13 @@ function App() {
   ));
 
   const filteredArr = allCountries.filter((item) => {
-    return item.props.country.toLowerCase().includes(searchValue.toLowerCase());
+    return item.props.country
+      .toLowerCase()
+      .includes(searchValue.trim().toLowerCase());
   });
 
   if (filteredArr.length > 0) {
-    filteredArr.forEach((item) => (
+    filteredArr.map((item) => (
       <CountryCard
         key={item.props.alpha3Code}
         flag={item.props.flag}
@@ -49,15 +52,18 @@ function App() {
       />
     ));
   } else {
-    console.log("No matches");
+    <li>NO MATCHES</li>;
   }
 
   return (
     <>
       <Header />
-      <Search onSearch={onSearch} searchValue={searchValue} />
-      <div className="bg-veryLightGray dark:bg-darkBlue px-12 pt-5">
-        <ul>{filteredArr}</ul>
+      <div className="bg-veryLightGray dark:bg-darkBlue h-screen">
+        <Search onSearch={onSearch} searchValue={searchValue} />
+        <div className="px-12 pt-5">
+          <Filter />
+          <ul>{filteredArr}</ul>
+        </div>
       </div>
     </>
   );
