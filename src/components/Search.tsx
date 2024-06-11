@@ -1,22 +1,17 @@
 import { useState } from "react";
-import { fetchData } from "./fetchData";
+import jsonData from "../data.json";
+import CountryCard from "./CountryCard";
 
-function Search() {
-  //   const [searchValue, setSearchValue] = useState<string>("");
-
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    console.log(value);
-  };
-
+function Search({ onSearch, searchValue }) {
   return (
     <>
       <label htmlFor="">
         Countries input
         <input
           className="border-4 outline-none"
-          onChange={(event) => onChange(event)}
           type="text"
+          value={searchValue}
+          onChange={onSearch}
         />
       </label>
     </>
