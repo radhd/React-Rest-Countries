@@ -1,4 +1,4 @@
-export interface Country {
+interface Country {
   name: string;
   official_name: string;
   topLevelDomain: string[];
@@ -60,3 +60,5 @@ export interface Country {
     name: string;
   }[];
 }
+
+export default Country;
