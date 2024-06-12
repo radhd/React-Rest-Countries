@@ -1,14 +1,12 @@
 import Form from "react-bootstrap/Form";
+import { useState } from "react";
 
-function SelectBasicExample() {
-  const handleClick = (event) => {
-    console.log(event.target.value);
-  };
+function SelectBasicExample({ onClick }) {
   return (
     <Form.Select
       className="mb-5 bg-white p-2"
       aria-label="Default select example"
-      onClick={handleClick}
+      onClick={onClick}
     >
       <option>Filter by Region</option>
       <option value="Africa">Africa</option>

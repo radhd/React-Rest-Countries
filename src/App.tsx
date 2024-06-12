@@ -16,6 +16,12 @@ interface Country {
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
+  const [region, setRegion] = useState(null);
+
+  function handleClick(event) {
+    setRegion(event.target.value);
+    console.log();
+  }
 
   const onSearch = (event) => {
     setSearchValue(event.target.value);
@@ -61,7 +67,7 @@ function App() {
       <div className="bg-veryLightGray dark:bg-darkBlue h-screen">
         <Search onSearch={onSearch} searchValue={searchValue} />
         <div className="px-12 pt-5">
-          <Filter />
+          <Filter onClick={handleClick} />
           <ul>{filteredArr}</ul>
         </div>
       </div>
