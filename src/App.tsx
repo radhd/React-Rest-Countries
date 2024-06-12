@@ -20,7 +20,6 @@ function App() {
 
   function handleClick(event) {
     setRegion(event.target.value);
-    console.log();
   }
 
   const onSearch = (event) => {
@@ -42,9 +41,14 @@ function App() {
   const allCountries = jsonData.map(renderCountryCard);
 
   const filteredArr = allCountries.filter((item) => {
+    console.log(item.props.region);
     return item.props.country
       .toLowerCase()
       .includes(searchValue.trim().toLowerCase());
+  });
+
+  const filterByRegion = filteredArr.filter((item) => {
+    return item.props.region === region;
   });
 
   return (
@@ -54,7 +58,15 @@ function App() {
         <Search onSearch={onSearch} searchValue={searchValue} />
         <div className="px-12 pt-5">
           <Filter onClick={handleClick} />
-          <ul>{filteredArr.length > 0 ? filteredArr : <li>NO MATCHES</li>}</ul>
+          <ul>
+            {filterByRegion.length > 0 ? (
+              filterByRegion
+            ) : filteredArr.length > 0 ? (
+              filteredArr
+            ) : (
+              <li>NO MATCHES</li>
+            )}
+          </ul>
         </div>
       </div>
     </>
