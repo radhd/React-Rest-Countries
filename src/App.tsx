@@ -27,7 +27,7 @@ function App() {
     setSearchValue(event.target.value);
   };
 
-  const allCountries = jsonData.map((country: Country) => (
+  const renderCountryCard = (country) => (
     <CountryCard
       key={country.alpha3Code}
       flag={country.flag}
@@ -35,31 +35,17 @@ function App() {
       population={country.population}
       region={country.region}
       capital={country.capital || ""}
-      alpha3Code={""}
+      alpha3Code={country.alpha3Code}
     />
-  ));
+  );
+
+  const allCountries = jsonData.map(renderCountryCard);
 
   const filteredArr = allCountries.filter((item) => {
     return item.props.country
       .toLowerCase()
       .includes(searchValue.trim().toLowerCase());
   });
-
-  if (filteredArr.length > 0) {
-    filteredArr.map((item) => (
-      <CountryCard
-        key={item.props.alpha3Code}
-        flag={item.props.flag}
-        country={item.props.name}
-        population={item.props.population}
-        region={item.props.region}
-        capital={item.props.capital || ""}
-        alpha3Code={""}
-      />
-    ));
-  } else {
-    <li>NO MATCHES</li>;
-  }
 
   return (
     <>
@@ -68,7 +54,7 @@ function App() {
         <Search onSearch={onSearch} searchValue={searchValue} />
         <div className="px-12 pt-5">
           <Filter onClick={handleClick} />
-          <ul>{filteredArr}</ul>
+          <ul>{filteredArr.length > 0 ? filteredArr : <li>NO MATCHES</li>}</ul>
         </div>
       </div>
     </>
