@@ -41,7 +41,6 @@ function App() {
   const allCountries = jsonData.map(renderCountryCard);
 
   const filteredArr = allCountries.filter((item) => {
-    console.log(item.props.region);
     return item.props.country
       .toLowerCase()
       .includes(searchValue.trim().toLowerCase());
@@ -53,10 +52,10 @@ function App() {
 
   return (
     <>
-      <Header />
-      <div className="bg-veryLightGray dark:bg-darkBlue h-screen">
+      <div className="bg-veryLightGray dark:bg-darkBlue h-screen dark:text-white">
+        <Header />
         <Search onSearch={onSearch} searchValue={searchValue} />
-        <div className="px-12 pt-5">
+        <div className="dark:bg-darkBlue px-12 pt-5">
           <Filter onClick={handleClick} />
           <ul>
             {filterByRegion.length > 0 ? (
