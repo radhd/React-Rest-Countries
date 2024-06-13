@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import { useState } from "react";
 import Filter from "./components/Filter";
+import ItemComponent from "./components/ItemComponent";
 
 interface Country {
   alpha3Code: string;
@@ -17,6 +18,8 @@ interface Country {
 function App() {
   const [searchValue, setSearchValue] = useState("");
   const [region, setRegion] = useState(null);
+  const [selectedList, setSelectedList] = useState(null);
+  const [tab, setTab] = useState("main");
 
   function handleClick(event) {
     setRegion(event.target.value);
@@ -50,22 +53,42 @@ function App() {
     return item.props.region === region;
   });
 
+  const renderList =
+    filterByRegion.length > 0 ? (
+      filterByRegion.map((item, index) => (
+        <li key={index}>
+          <button onClick={() => handleListClick(item)}>{item}</button>
+        </li>
+      ))
+    ) : filteredArr.length > 0 ? (
+      filteredArr.map((item, index) => (
+        <li key={index}>
+          <button onClick={() => handleListClick(item)}>{item}</button>
+        </li>
+      ))
+    ) : (
+      <li>NO MATCHES</li>
+    );
+
+  const handleListClick = (item) => {
+    setSelectedList(item);
+    console.log(item.name);
+    setTab(item.name);
+  };
+
   return (
     <>
-      <div className="bg-veryLightGray dark:bg-darkBlue h-screen dark:text-white">
+      <div className="h-screen bg-veryLightGray dark:bg-darkBlue dark:text-white">
         <Header />
         <Search onSearch={onSearch} searchValue={searchValue} />
-        <div className="dark:bg-darkBlue px-12 pt-5">
+        <div className="px-12 pt-5 dark:bg-darkBlue">
           <Filter onClick={handleClick} />
-          <ul>
-            {filterByRegion.length > 0 ? (
-              filterByRegion
-            ) : filteredArr.length > 0 ? (
-              filteredArr
-            ) : (
-              <li>NO MATCHES</li>
-            )}
-          </ul>
+
+          {tab === "main" ? (
+            <ul>{renderList}</ul>
+          ) : (
+            selectedList && <ItemComponent tab={tab} />
+          )}
         </div>
       </div>
     </>
