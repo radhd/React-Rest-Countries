@@ -83,7 +83,7 @@ function App() {
 
   return (
     <>
-      <div className="h-screen dark:bg-darkBlue dark:text-white">
+      <div className="h-screen dark:bg-veryDarkBlueBg dark:text-white">
         <Header />
 
         {tab === "main" ? (
