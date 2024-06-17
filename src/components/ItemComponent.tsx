@@ -1,9 +1,11 @@
-import { useState } from "react";
+function ItemComponent({ tab, setTab }) {
+  const onClick = () => {
+    setTab("main");
+  };
 
-function ItemComponent() {
   return (
     <div>
-      <button>Back</button>
+      <button onClick={onClick}>Back</button>
       <div>
         <p>hello</p>
       </div>

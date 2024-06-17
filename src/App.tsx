@@ -72,8 +72,7 @@ function App() {
 
   const handleListClick = (item) => {
     setSelectedList(item);
-    console.log(item.name);
-    setTab(item.name);
+    setTab(item.props.country);
   };
 
   return (
@@ -87,7 +86,7 @@ function App() {
           {tab === "main" ? (
             <ul>{renderList}</ul>
           ) : (
-            selectedList && <ItemComponent tab={tab} />
+            selectedList && <ItemComponent tab={tab} setTab={setTab} />
           )}
         </div>
       </div>
