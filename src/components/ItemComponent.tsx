@@ -34,8 +34,8 @@ function ItemComponent(props) {
       </button>
       <div>
         <img src={country.flag} alt="" />
-        <div className="">
-          <h2 className="">{country.country}</h2>
+        <div className="space-y-6 py-7">
+          <h2 className="mb-3 text-lg font-bold">{country.country}</h2>
           <ul>
             <li>Native Name: {country.nativeName}</li>
             <li>Populaiton: {country.population}</li>
