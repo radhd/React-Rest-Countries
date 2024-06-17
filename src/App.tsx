@@ -38,6 +38,12 @@ function App() {
       region={country.region}
       capital={country.capital || ""}
       alpha3Code={country.alpha3Code}
+      nativeName={country.nativeName}
+      borders={country.borders}
+      subRegion={country.subregion}
+      domain={country.topLevelDomain}
+      currencies={country.currencies}
+      languages={country.languages}
     />
   );
 
@@ -77,7 +83,7 @@ function App() {
 
   return (
     <>
-      <div className="h-screen bg-veryLightGray dark:bg-darkBlue dark:text-white">
+      <div className="h-screen dark:bg-darkBlue dark:text-white">
         <Header />
         <Search onSearch={onSearch} searchValue={searchValue} />
         <div className="px-12 pt-5 dark:bg-darkBlue">
@@ -86,7 +92,9 @@ function App() {
           {tab === "main" ? (
             <ul>{renderList}</ul>
           ) : (
-            selectedList && <ItemComponent tab={tab} setTab={setTab} />
+            selectedList && (
+              <ItemComponent setTab={setTab} selectedList={selectedList} />
+            )
           )}
         </div>
       </div>
