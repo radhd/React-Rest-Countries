@@ -85,18 +85,18 @@ function App() {
     <>
       <div className="h-screen dark:bg-darkBlue dark:text-white">
         <Header />
-        <Search onSearch={onSearch} searchValue={searchValue} />
-        <div className="px-12 pt-5 dark:bg-darkBlue">
-          <Filter onClick={handleClick} />
 
-          {tab === "main" ? (
+        {tab === "main" ? (
+          <>
+            <Search onSearch={onSearch} searchValue={searchValue} />
+            <Filter onClick={handleClick} />
             <ul>{renderList}</ul>
-          ) : (
-            selectedList && (
-              <ItemComponent setTab={setTab} selectedList={selectedList} />
-            )
-          )}
-        </div>
+          </>
+        ) : (
+          selectedList && (
+            <ItemComponent setTab={setTab} selectedList={selectedList} />
+          )
+        )}
       </div>
     </>
   );

@@ -7,11 +7,13 @@ function ItemComponent(props) {
 
   const country = selectedList.props;
 
-  console.log("Borders: ", country.borders);
+  // console.log("Borders: ", country.borders);
 
-  const renderButtons = () => {
-    
-  }
+  // const renderButtons = () => {
+  //   return country.borders.map((country, index) => {
+  //     console.log(country);
+  //   });
+  // };
 
   const renderLanguages = () => {
     return country.languages.map((languages) => languages.name).join(", ");
@@ -35,20 +37,6 @@ function ItemComponent(props) {
           <li>Currencies: {country.currencies[0].code}</li>
           <li>Languages: {renderLanguages()}</li>
         </ul>
-        <div>
-          <h3>Border Countries:</h3>
-          <ul>
-            <li>
-              <button>{}</button>
-            </li>
-            <li>
-              <button>{}</button>
-            </li>
-            <li>
-              <button>{}</button>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   );
