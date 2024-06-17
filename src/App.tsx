@@ -83,7 +83,7 @@ function App() {
 
   return (
     <>
-      <div className="dark:bg-veryDarkBlueBg dark:text-white">
+      <div className="font-nunito dark:bg-veryDarkBlueBg dark:text-white">
         <Header />
 
         <div className="space-y-5 px-6">
