@@ -16,7 +16,7 @@ function Search(props: SearchProps) {
       <label className="relative">
         <MagnifyingGlassIcon className="absolute left-5 top-0.5 size-5 text-slate-400 lg:top-0.5" />
         <input
-          className="m-0 w-full rounded-lg p-0 px-14 py-2 shadow-lg outline-none dark:bg-darkBlue"
+          className="m-0 mt-5 w-full rounded-lg p-0 px-14 py-2 shadow-lg outline-none dark:bg-darkBlue"
           type="text"
           value={searchValue}
           onChange={onSearch}
