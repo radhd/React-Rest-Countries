@@ -12,12 +12,16 @@ function CountryCard(props: CountryCardProps) {
 
   return (
     <>
-      <li
-        className="border-1 mb-10 rounded-lg bg-white text-start shadow-lg dark:bg-darkBlue"
+      <div
+        className="border-1 lg:margin-auto mb-10 rounded-lg bg-white text-start shadow-lg dark:bg-darkBlue lg:mb-0 lg:w-72"
         key={alpha3Code}
       >
-        <img className="rounded-t-lg pb-5" src={flag} alt="" />
-        <div className="px-5 pb-7">
+        <img
+          className="rounded-t-lg pb-5 lg:h-52 lg:w-full"
+          src={flag}
+          alt=""
+        />
+        <div className="px-5 pb-7 lg:px-2 lg:pb-3">
           <h2 className="mb-3 font-extraBold">{country}</h2>
           <div className="font-semiBold">
             <p>
@@ -31,7 +35,7 @@ function CountryCard(props: CountryCardProps) {
             </p>
           </div>
         </div>
-      </li>
+      </div>
     </>
   );
 }

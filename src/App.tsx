@@ -86,12 +86,16 @@ function App() {
       <div className="font-nunito dark:bg-veryDarkBlueBg dark:text-white">
         <Header />
 
-        <div className="space-y-5 px-6">
+        <div className="space-y-5 px-6 lg:px-10">
           {tab === "main" ? (
             <>
-              <Search onSearch={onSearch} searchValue={searchValue} />
-              <Filter onClick={handleClick} />
-              <ul className="px-8">{renderList}</ul>
+              <div className="space-y-3 lg:flex lg:justify-between">
+                <Search onSearch={onSearch} searchValue={searchValue} />
+                <Filter onClick={handleClick} />
+              </div>
+              <ul className="px-8 lg:flex lg:flex-wrap lg:justify-center lg:gap-16 lg:px-0">
+                {renderList}
+              </ul>
             </>
           ) : (
             selectedList && (

@@ -17,7 +17,7 @@ function Header() {
   }, [theme]);
 
   return (
-    <div className="flex justify-between px-5 py-6 shadow-md dark:bg-darkBlue">
+    <div className="flex justify-between px-5 py-6 shadow-md dark:bg-darkBlue lg:px-12">
       <h1 className="font-nunito font-extraBold">Where in the world?</h1>
       <div onClick={handleThemeSwitcher} className="flex space-x-2">
         <MoonIcon className="size-5" />
