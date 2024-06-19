@@ -5,6 +5,7 @@ import Search from "./components/Search";
 import { useState } from "react";
 import Filter from "./components/Filter";
 import ItemComponent from "./components/ItemComponent";
+import CountryInterfaces from "./CountriesInterfaces";
 
 interface Country {
   alpha3Code: string;
@@ -12,24 +13,43 @@ interface Country {
   name: string;
   population: number;
   region: string;
-  capital?: string;
+  capital: string;
+  nativeName: string;
+  borders: string[];
+  subregion: string;
+  topLevelDomain: string[];
+  currencies: Currency[];
+  languages: Language[];
+}
+
+interface Currency {
+  code: string;
+  name: string;
+  symbol: string;
+}
+
+interface Language {
+  iso639_1: string;
+  iso639_2: string;
+  name: string;
+  nativeName: string;
 }
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
-  const [region, setRegion] = useState(null);
+  const [region, setRegion] = useState("");
   const [selectedList, setSelectedList] = useState(null);
   const [tab, setTab] = useState("main");
 
-  function handleClick(event) {
+  function handleClick(event: React.ChangeEvent<HTMLInputElement>) {
     setRegion(event.target.value);
   }
 
-  const onSearch = (event) => {
+  const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
 
-  const renderCountryCard = (country) => (
+  const renderCountryCard = (country: Country) => (
     <CountryCard
       key={country.alpha3Code}
       flag={country.flag}
@@ -40,7 +60,7 @@ function App() {
       alpha3Code={country.alpha3Code}
       nativeName={country.nativeName}
       borders={country.borders}
-      subRegion={country.subregion}
+      subregion={country.subregion}
       domain={country.topLevelDomain}
       currencies={country.currencies}
       languages={country.languages}

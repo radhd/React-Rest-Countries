@@ -1,10 +1,31 @@
+ 
+
 interface CountryCardProps {
   alpha3Code: string;
   flag: string;
   country: string;
   population: number;
   region: string;
-  capital?: string;
+  capital: string;
+  nativeName: string;
+  borders: string[];
+  subregion: string;
+  domain: string[];
+  currencies: Currency[];
+  languages: Language[];
+}
+
+interface Currency {
+  code: string;
+  name: string;
+  symbol: string;
+}
+
+interface Language {
+  iso639_1: string;
+  iso639_2: string;
+  name: string;
+  nativeName: string;
 }
 
 function CountryCard(props: CountryCardProps) {
